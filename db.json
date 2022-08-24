@@ -8,5 +8,16 @@
       "id": 2,
       "nome": "Vue3"
     }
+  ],
+  "tarefas": [
+    {
+      "id": 1,
+      "duracaoEmSegundos": 120,
+      "descricao": "Configuração do Ambiente",
+      "projeto": {
+        "id": 1,
+        "nome": "Alura Tracker "
+      }
+    }
   ]
 }
