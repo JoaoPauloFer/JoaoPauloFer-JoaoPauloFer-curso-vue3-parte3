@@ -27,6 +27,15 @@
         "nome": "Alura Tracker "
       },
       "id": 2
+    },
+    {
+      "duracaoEmSegundos": 1,
+      "descricao": "Estudando padrões de projetos",
+      "projeto": {
+        "id": 2,
+        "nome": "Vue3"
+      },
+      "id": 3
     }
   ]
 }
