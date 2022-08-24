@@ -4,14 +4,15 @@
         <form @submit.prevent="salvar">
             <div class="field">
                 <label for="nomeDoProjeto" class="label"> Nome do Projeto </label>
-                <input type="text" 
-                class="input" 
-                v-model="nomeDoProjeto" id="nomeDoProjeto">
+                <input 
+                    type="text" 
+                    class="input" 
+                    v-model="nomeDoProjeto" 
+                    id="nomeDoProjeto"
+                />
             </div>
             <div class="field">
-                <button class="button" type="submit">
-                    Salvar
-                </button>
+                <button class="button" type="submit">Salvar</button>
             </div>
         </form>
     </section>
