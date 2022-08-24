@@ -1,9 +1,9 @@
 import IProjeto from "@/interfaces/IProjeto";
 import { InjectionKey } from "vue";
 import { createStore, Store, useStore as vuexUseStore } from "vuex";
-import { ADICIONA_PROJETO, ALTERA_PROJETO, DEFINIR_PROJETOS, DEFINIR_TAREFAS, EXCLUIR_PROJETO, NOTIFICAR } from "./tipo-mutacoes";
+import { ADICIONA_PROJETO, ADICIONA_TAREFA, ALTERA_PROJETO, DEFINIR_PROJETOS, DEFINIR_TAREFAS, EXCLUIR_PROJETO, NOTIFICAR } from "./tipo-mutacoes";
 import { INotificacao } from "@/interfaces/INotificacao"
-import { CADASTRAR_PROJETO, OBTER_PROJETOS, ALTERAR_PROJETO, REMOVER_PROJETO, OBTER_TAREFAS } from "./tipo-acoes";
+import { CADASTRAR_PROJETO, OBTER_PROJETOS, ALTERAR_PROJETO, REMOVER_PROJETO, OBTER_TAREFAS, CADASTRAR_TAREFA } from "./tipo-acoes";
 import http from "@/http"
 import ITarefa from "@/interfaces/ITarefa";
 
@@ -42,6 +42,9 @@ export const store = createStore<Estado>({
         [DEFINIR_TAREFAS] (state, tarefas: ITarefa[]) {
             state.tarefas = tarefas
         },
+        [ADICIONA_TAREFA](state, tarefa: ITarefa) {
+            state.tarefas.push(tarefa)
+        },
         [NOTIFICAR] (state, novaNotificacao: INotificacao) {
             novaNotificacao.id = new Date().getTime()
             state.notificacoes.push(novaNotificacao)
@@ -70,6 +73,10 @@ export const store = createStore<Estado>({
         [OBTER_TAREFAS] ({ commit }) {
             http.get('tarefas')
                 .then(resposta => commit(DEFINIR_TAREFAS, resposta.data))
+        },
+        [CADASTRAR_TAREFA] ({ commit }, tarefa: ITarefa) {
+            return http.post('/tarefas', tarefa)
+                .then(resposta => commit(ADICIONA_TAREFA, resposta.data))
         },
     }
 })
