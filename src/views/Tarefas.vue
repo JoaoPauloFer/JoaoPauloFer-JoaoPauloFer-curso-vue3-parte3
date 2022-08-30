@@ -45,7 +45,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref } from 'vue';
+import { defineComponent, computed, ref, watchEffect } from 'vue';
 import ITarefa from '@/interfaces/ITarefa';
 import Formulario from '../components/Formulario.vue'
 import Tarefa from '../components/Tarefa.vue'
@@ -91,6 +91,12 @@ export default defineComponent({
     store.dispatch(OBTER_PROJETOS);
 
     const filtro = ref('')
+
+    // const tarefas = computed(() => store.state.tarefa.tarefas.filter(t => !filtro.value || t.descricao.includes(filtro.value)))
+
+    watchEffect(() => {
+      store.dispatch(OBTER_TAREFAS, filtro.value)
+    })
 
     return {
       tarefas: computed(() => store.state.tarefa.tarefas),
