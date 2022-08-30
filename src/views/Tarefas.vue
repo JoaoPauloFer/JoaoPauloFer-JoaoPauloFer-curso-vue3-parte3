@@ -50,7 +50,7 @@ import ITarefa from '@/interfaces/ITarefa';
 import Formulario from '../components/Formulario.vue'
 import Tarefa from '../components/Tarefa.vue'
 import Box from '../components/Box.vue'
-import { useStore } from '@/store';
+import { useStore } from '@/store/index';
 import { OBTER_TAREFAS, CADASTRAR_TAREFA, OBTER_PROJETOS, ALTERAR_TAREFA } from '@/store/tipo-acoes';
 
 export default defineComponent({
@@ -85,23 +85,19 @@ export default defineComponent({
       return this.tarefas.length === 0
     }
   },
-  setup () {
-      const store = useStore()
-      store.dispatch(OBTER_TAREFAS)
-      store.dispatch(OBTER_PROJETOS)
+  setup() {
+    const store = useStore();
+    store.dispatch(OBTER_TAREFAS);
+    store.dispatch(OBTER_PROJETOS);
 
-      const filtro = ref('')
+    const filtro = ref('')
 
-      const tarefas = computed(() => store.state.tarefas.filter(
-        (t) => !filtro.value || t.descricao.includes(filtro.value)
-      ))
-
-      return {
-        tarefas,
-        store,
-        filtro
-      }
-    }
+    return {
+      tarefas: computed(() => store.state.tarefa.tarefas),
+      store,
+      filtro
+    };
+  },
 });
 </script>
 

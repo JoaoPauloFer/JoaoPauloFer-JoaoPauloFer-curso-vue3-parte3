@@ -10,7 +10,7 @@
     },
     {
       "id": 3,
-      "nome": "Vontade de ...estudar  ; -)"
+      "nome": "Vontade de... estudar  ; -)"
     }
   ],
   "tarefas": [
@@ -40,6 +40,15 @@
         "nome": "Vue3"
       },
       "id": 3
+    },
+    {
+      "duracaoEmSegundos": 4,
+      "descricao": "teste",
+      "projeto": {
+        "id": 3,
+        "nome": "Vontade de ...estudar  ; -)"
+      },
+      "id": 4
     }
   ]
 }

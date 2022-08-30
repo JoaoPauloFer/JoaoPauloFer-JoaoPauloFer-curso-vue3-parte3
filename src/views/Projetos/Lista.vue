@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts">
-import { useStore } from '@/store';
+import { useStore } from '@/store/index';
 import { computed, defineComponent } from 'vue';
 import { OBTER_PROJETOS, REMOVER_PROJETO } from '@/store/tipo-acoes';
 export default defineComponent({
